@@ -9,7 +9,7 @@ request.onload = function() {
     console.log(data)
     const header = document.createElement('header');
     header.innerHTML = data.message
-    const root = document.getElementById('root');
+    const root = document.getElementById('initial-message-index');
     root.appendChild(header);
   } else {
     console.log('error')
