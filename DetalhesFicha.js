@@ -1,3 +1,5 @@
+const { id_ficha } = require('./fichas.js')
+console.log(id_ficha);
 var request = new XMLHttpRequest()
 
 request.open('GET', 'http://localhost:3000/fichas/4', true)

@@ -1,3 +1,5 @@
+
+
 var request = new XMLHttpRequest()
 
 request.open('GET', 'http://localhost:3000/fichas', true)
@@ -38,12 +40,12 @@ request.onload = function() {
          table_Data10 = document.createElement('td');
          table_Data11 = document.createElement('td');
          table_Data12 = document.createElement('td');
-    /*      table_Data13 = document.createElement('td');
-         table_Data14 = document.createElement('td'); */
         const link = document.createElement('a');
+        link.addEventListener('click', function() {id_ficha = element.NUMFICHA; 
+        console.log(id_ficha)});
         link.href = '/DetalhesFicha.html';
-        console.log(link);
         link.textContent = element.NUMFICHA
+ 
         table_Data.appendChild(link);
         table_Data2.innerHTML = element.MATRICULA;
          table_Data3.innerHTML = element.NOMESERVIDOR;
@@ -81,5 +83,6 @@ request.onload = function() {
       console.log('error')
     }
   }
-  
   request.send()
+
+export default { id_ficha}; 
