@@ -40,9 +40,12 @@ request.onload = function() {
          table_Data12 = document.createElement('td');
     /*      table_Data13 = document.createElement('td');
          table_Data14 = document.createElement('td'); */
-
-         table_Data.innerHTML = element.NUMFICHA;
-         table_Data2.innerHTML = element.MATRICULA;
+        const link = document.createElement('a');
+        link.href = '/DetalhesFicha.html';
+        console.log(link);
+        link.textContent = element.NUMFICHA
+        table_Data.appendChild(link);
+        table_Data2.innerHTML = element.MATRICULA;
          table_Data3.innerHTML = element.NOMESERVIDOR;
          table_Data4.innerHTML = element.NOMEMAE;
          table_Data5.innerHTML = element.DTNASC;
