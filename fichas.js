@@ -2,9 +2,13 @@ var request = new XMLHttpRequest()
 
 request.open('GET', 'http://localhost:3000/fichas', true)
 request.onload = function() {
+
   // Begin accessing JSON data here
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
+    const root = document.getElementById('root');
+    root.removeChild(document.getElementById('loading'))
+
     const table = document.createElement('table');
     table_line = document.createElement('tr');
     table.appendChild(table_line);
