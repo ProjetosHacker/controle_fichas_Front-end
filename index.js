@@ -8,9 +8,15 @@ request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     console.log(data)
     const header = document.createElement('header');
+    header.setAttribute('class','display-2');
     header.innerHTML = data.message
     const root = document.getElementById('initial-message-index');
+    const fichasLink = document.createElement('a');
+    fichasLink.innerText = 'clique para acessar ';
+    fichasLink.href = '/fichas.html'   
     root.appendChild(header);
+    root.appendChild(fichasLink);
+
   } else {
     console.log('error')
   }
