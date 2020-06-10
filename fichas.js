@@ -1,7 +1,7 @@
 
 
 var request = new XMLHttpRequest()
-
+let id_ficha = null;
 request.open('GET', 'http://localhost:3000/fichas', true)
 request.onload = function() {
 
@@ -85,4 +85,6 @@ request.onload = function() {
   }
   request.send()
 
-export default { id_ficha}; 
+/*   module.exports = { 
+    id_ficha 
+}  */
