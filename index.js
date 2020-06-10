@@ -12,7 +12,7 @@ request.onload = function() {
     header.innerHTML = data.message
     const root = document.getElementById('initial-message-index');
     const fichasLink = document.createElement('a');
-    fichasLink.innerText = 'clique para acessar ';
+    fichasLink.innerText = 'Lista de Fichas ';
     fichasLink.href = '/fichas.html'   
     root.appendChild(header);
     root.appendChild(fichasLink);
