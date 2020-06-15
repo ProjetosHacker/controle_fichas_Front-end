@@ -60,6 +60,18 @@ request.onload = function() {
         root.appendChild(document.createElement('label')).innerText=" UF: ";
         root.appendChild(document.createElement('label')).innerHTML= '&nbsp;&nbsp;' + element.UF;
         root.appendChild(document.createElement('br'))
+
+        const listFichaLink = document.createElement('a');
+        listFichaLink.href = '/fichas.html';
+        listFichaLink.textContent = 'Voltar a Lista de fichas';        
+        
+        const indexLink = document.createElement('a');
+        indexLink.href = '/index.html';
+        indexLink.textContent = 'Voltar a Tela Inicial';      
+
+        root.appendChild(indexLink);
+        root.appendChild(document.createElement('br'));
+        root.appendChild(listFichaLink);
         
 
     });
