@@ -1,7 +1,10 @@
 
 
 var request = new XMLHttpRequest()
-let id_ficha = null;
+// let id_ficha = null;
+var globalVariable={
+  id_ficha: 'sachin'
+    };
 request.open('GET', 'http://localhost:3000/fichas', true)
 request.onload = function() {
 
@@ -41,8 +44,10 @@ request.onload = function() {
          table_Data11 = document.createElement('td');
          table_Data12 = document.createElement('td');
         const link = document.createElement('a');
-        link.addEventListener('click', function() {id_ficha = element.NUMFICHA; 
-        console.log(id_ficha)});
+        link.addEventListener('click', function() {
+          id_ficha = element.NUMFICHA; 
+          localStorage.setItem('numero_ficha', id_ficha);
+        });
         link.href = '/DetalhesFicha.html';
         link.textContent = element.NUMFICHA
  
