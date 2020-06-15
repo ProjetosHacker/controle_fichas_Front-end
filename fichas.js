@@ -15,6 +15,7 @@ request.onload = function() {
     root.removeChild(document.getElementById('loading'))
 
     const table = document.createElement('table');
+    table.setAttribute('class', 'table')
     table_line = document.createElement('tr');
     table.appendChild(table_line);
     table_line.appendChild(document.createElement('th')).innerHTML='Ficha Num.';
