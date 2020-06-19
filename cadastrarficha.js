@@ -20,9 +20,15 @@ codusuempInput.setAttribute('class','hidden');
 rootDiv.appendChild(codlocalInput);
 rootDiv.appendChild(sitfichaInput);
 rootDiv.appendChild(codusuempInput);
+function submitForm(event) {
+      event.preventDefault();
+    document.getElementsByTagName('form')[0].submit();  
+    alert('ficha cadastrada com sucesso !')
+    
+    }
+    
 
-function printConsole() {
-const request = new XMLHttpRequest()
-console.log(request.getAllResponseHeaders(),'aqui');
+button_cadastrar = document.getElementsByName('button_cadastrar');
+button_cadastrar.addEventListener('onclick',(event) => this.submitForm(event));
 
-}
+
