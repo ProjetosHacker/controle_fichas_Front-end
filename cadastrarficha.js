@@ -1,3 +1,4 @@
+
 const codlocalInput = document.createElement('input');
 const sitfichaInput = document.createElement('input');
 const codusuempInput = document.createElement('input');
@@ -19,3 +20,9 @@ codusuempInput.setAttribute('class','hidden');
 rootDiv.appendChild(codlocalInput);
 rootDiv.appendChild(sitfichaInput);
 rootDiv.appendChild(codusuempInput);
+
+function printConsole() {
+const request = new XMLHttpRequest()
+console.log(request.getAllResponseHeaders(),'aqui');
+
+}
