@@ -21,3 +21,24 @@ rootDiv.appendChild(codlocalInput);
 rootDiv.appendChild(sitfichaInput);
 rootDiv.appendChild(codusuempInput);
 
+const form = document.getElementById('Cadastrar_ficha');
+const formData = new FormData(form);
+
+async function enviaDados() {
+let response = await fetch('http://localhost:3000/inserir/ficha', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: formData
+  });
+  
+  let result = await response;
+  alert(result.message);
+}
+
+form.onsubmit = function(event) {    
+  enviaDados();
+  event.preventDefault();
+  alert('submited!');
+}
