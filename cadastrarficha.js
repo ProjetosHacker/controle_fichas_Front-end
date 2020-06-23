@@ -22,9 +22,20 @@ rootDiv.appendChild(sitfichaInput);
 rootDiv.appendChild(codusuempInput);
 
 const form = document.getElementById('Cadastrar_ficha');
-const formData = new FormData(form);
 
-async function enviaDados() {
+
+function urlencodeFormData(fd){
+    var s = '';
+    function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
+    for(var pair of fd.entries()){
+        if(typeof pair[1]=='string'){
+            s += (s?'&':'') + encode(pair[0])+'='+encode(pair[1]);
+        }
+    }
+    return s;
+}
+
+async function enviaDados(formData) {
 let response = await fetch('http://localhost:3000/inserir/ficha', {
     method: 'POST',
     headers: {
@@ -37,8 +48,9 @@ let response = await fetch('http://localhost:3000/inserir/ficha', {
   alert(result.message);
 }
 
-form.onsubmit = function(event) {    
-  enviaDados();
+form.onsubmit = function(event) {
+    const formData = urlencodeFormData(new FormData(form)); 
+  enviaDados(formData);
   event.preventDefault();
   alert('submited!');
 }
