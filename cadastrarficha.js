@@ -23,7 +23,7 @@ rootDiv.appendChild(codusuempInput);
 
 const form = document.getElementById('Cadastrar_ficha');
 
-
+//take a multi-part form data type and transform in x-www-url-form-encode
 function urlencodeFormData(fd){
     var s = '';
     function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
