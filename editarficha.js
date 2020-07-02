@@ -1,13 +1,38 @@
+const matriculaInput = document.getElementsByName('MATRICULA')[0];
+const nomeServidorInput = document.getElementsByName('NOMESERVIDOR')[0];
+const nomeMaeInput = document.getElementsByName('NOMEMAE')[0];
+const dataNascimentoInput = document.getElementsByName('DTNASC')[0];
+const cpfServidorInput = document.getElementsByName('CPF')[0];
+const estanteInput = document.getElementsByName('ESTANTE')[0];
+const prateleiraInput = document.getElementsByName('PRATELEIRA')[0];
+const rgInput = document.getElementsByName('RG')[0];
+const orgaoExpInput = document.getElementsByName('ORGAOEXP')[0];
+const ufInput = document.getElementsByName('UF')[0];
 
 var request = new XMLHttpRequest()
 var ficha_id = localStorage.getItem('numero_ficha');
 request.open('GET', 'http://localhost:3000/fichas/' + ficha_id, true)
+
 request.onload = function() {
 
   // Begin accessing JSON data here
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
-    console.log(data);}
+    data.forEach(element => {
+    matriculaInput.setAttribute('value',element.MATRICULA);
+    nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);
+    nomeMaeInput.setAttribute('value',element.NOMEMAE);
+    dataNascimentoInput.setAttribute('value',element.DTNASC);
+    cpfServidorInput.setAttribute('value',element.CPF);
+    estanteInput.setAttribute('value',element.ESTANTE);
+    prateleiraInput.setAttribute('value',element.PRATELEIRA);
+    rgInput.setAttribute('value',element.RG);
+    orgaoExpInput.setAttribute('value', element.ORGAOEXP);
+    ufInput.setAttribute('value', element.UF);
+
+     
+    });
+   }
   }
   request.send();
 const codlocalInput = document.createElement('input');
@@ -47,7 +72,7 @@ function urlencodeFormData(fd){
 }
 
 async function enviaDados(formData) {
-let response = await fetch('http://localhost:3000/alterar/fichas/1', {
+let response = await fetch('http://localhost:3000/alterar/fichas/' + ficha_id, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
