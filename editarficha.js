@@ -1,4 +1,15 @@
 
+var request = new XMLHttpRequest()
+var ficha_id = localStorage.getItem('numero_ficha');
+request.open('GET', 'http://localhost:3000/fichas/' + ficha_id, true)
+request.onload = function() {
+
+  // Begin accessing JSON data here
+  var data = JSON.parse(this.response)
+  if (request.status >= 200 && request.status < 400) {
+    console.log(data);}
+  }
+  request.send();
 const codlocalInput = document.createElement('input');
 const sitfichaInput = document.createElement('input');
 const codusuempInput = document.createElement('input');

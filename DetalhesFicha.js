@@ -8,6 +8,7 @@ request.onload = function() {
   // Begin accessing JSON data here
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
+    console.log(data);
     const root = document.getElementById('root');
     data.forEach(element => {
         const Num_Ficha = document.createElement('label');
@@ -74,9 +75,7 @@ request.onload = function() {
         root.appendChild(listFichaLink);
         
 
-    });
-   
-      
+    });      
      
     } else {
       console.log('error')
