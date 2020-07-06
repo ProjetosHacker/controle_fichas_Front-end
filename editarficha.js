@@ -88,5 +88,5 @@ form.onsubmit = function(event) {
     const formData = urlencodeFormData(new FormData(form)); 
   enviaDados(formData);
   event.preventDefault();
-  alert('submited!');
+  window.location = '/fichas.html'
 }

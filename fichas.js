@@ -46,7 +46,7 @@ request.onload = function() {
          table_Data12 = document.createElement('td');
         const linkFichaDetails = document.createElement('a');
         const linkAlterarFicha = document.createElement('a');
-        const buttonDeleteFicha = document.createElement('span');
+        const buttonDeleteFicha = document.createElement('a');
         buttonDeleteFicha.setAttribute('class','material-icons');
         buttonDeleteFicha.innerHTML = 'delete';
 
@@ -60,9 +60,15 @@ request.onload = function() {
           id_ficha = element.NUMFICHA; 
           localStorage.setItem('numero_ficha', id_ficha);
         });
+
+        buttonDeleteFicha.addEventListener('click', function() {
+          id_ficha = element.NUMFICHA; 
+          localStorage.setItem('numero_ficha', id_ficha);
+        });
         
         linkFichaDetails.href = '/DetalhesFicha.html';
-        linkAlterarFicha.href = '/editarficha.html'
+        linkAlterarFicha.href = '/editarficha.html';
+        buttonDeleteFicha.href = '/delete.html';
         linkFichaDetails.textContent = element.NUMFICHA
         table_Data.appendChild(linkAlterarFicha);
         table_Data.appendChild(linkFichaDetails);
