@@ -79,13 +79,12 @@ request.onload = function() {
          table_Data4.innerHTML = element.NOMEMAE;
         // Tratando e formatando a data que vem no formato do mysql => 1985-05-15T04:00:00.000Z
         elementos_data = element.DTNASC.split("-");
-        console.log(element.DTNASC);
         dia = elementos_data[2].split('T');
         mes = elementos_data[1];
         ano = elementos_data[0];
          table_Data5.innerHTML = `${dia[0]}/${mes}/${ano}`;
-         cpf_digitos = [...element.CPF];
-         // Tratando e formatando a exibição do cpf na tela
+          // Tratando e formatando a exibição do cpf na tela
+         cpf_digitos = [...element.CPF];        
          table_Data6.innerHTML = `${cpf_digitos[0]}${cpf_digitos[1]}${cpf_digitos[2]}
          .${cpf_digitos[3]}${cpf_digitos[4]}${cpf_digitos[5]}.
          ${cpf_digitos[6]}${cpf_digitos[7]}${cpf_digitos[8]}
