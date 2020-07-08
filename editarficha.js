@@ -19,9 +19,10 @@ request.onload = function() {
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
     data.forEach(element => {
+            
     matriculaInput.setAttribute('value',element.MATRICULA);
     nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);
-    nomeMaeInput.setAttribute('value',element.NOMEMAE);
+    nomeMaeInput.setAttribute('value',element.NOMEMAE);    
     dataNascimentoInput.setAttribute('value',element.DTNASC);
     cpfServidorInput.setAttribute('value',element.CPF);
     estanteInput.setAttribute('value',element.ESTANTE);
