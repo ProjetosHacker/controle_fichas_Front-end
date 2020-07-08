@@ -84,14 +84,18 @@ request.onload = function() {
         mes = elementos_data[1];
         ano = elementos_data[0];
          table_Data5.innerHTML = `${dia[0]}/${mes}/${ano}`;
-         table_Data6.innerHTML = element.CPF;
+         cpf_digitos = [...element.CPF];
+         // Tratando e formatando a exibição do cpf na tela
+         table_Data6.innerHTML = `${cpf_digitos[0]}${cpf_digitos[1]}${cpf_digitos[2]}
+         .${cpf_digitos[3]}${cpf_digitos[4]}${cpf_digitos[5]}.
+         ${cpf_digitos[6]}${cpf_digitos[7]}${cpf_digitos[8]}
+         -${cpf_digitos[9]}${cpf_digitos[10]}`;
          table_Data7.innerHTML = element.CODLOCAL;
          table_Data8.innerHTML = element.ESTANTE;
          table_Data9.innerHTML = element.PRATELEIRA;
          table_Data10.innerHTML = element.RG;
          table_Data11.innerHTML = element.ORGAOEXP;
-         table_Data12.innerHTML = element.UF;
-         
+         table_Data12.innerHTML = element.UF;         
          table_lineBody.appendChild(table_Data)
          table_lineBody.appendChild(table_Data2);
          table_lineBody.appendChild(table_Data3);
