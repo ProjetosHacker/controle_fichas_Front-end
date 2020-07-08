@@ -77,7 +77,13 @@ request.onload = function() {
         table_Data2.innerHTML = element.MATRICULA;
          table_Data3.innerHTML = element.NOMESERVIDOR;
          table_Data4.innerHTML = element.NOMEMAE;
-         table_Data5.innerHTML = element.DTNASC;
+        // Tratando e formatando a data que vem no formato do mysql => 1985-05-15T04:00:00.000Z
+        elementos_data = element.DTNASC.split("-");
+        console.log(element.DTNASC);
+        dia = elementos_data[2].split('T');
+        mes = elementos_data[1];
+        ano = elementos_data[0];
+         table_Data5.innerHTML = `${dia[0]}/${mes}/${ano}`;
          table_Data6.innerHTML = element.CPF;
          table_Data7.innerHTML = element.CODLOCAL;
          table_Data8.innerHTML = element.ESTANTE;
@@ -85,9 +91,6 @@ request.onload = function() {
          table_Data10.innerHTML = element.RG;
          table_Data11.innerHTML = element.ORGAOEXP;
          table_Data12.innerHTML = element.UF;
-         /* table_Data13.innerHTML = element.NUMPRATELEIRA;
-         table_Data13.innerHTML = element.NUMPRATELEIRA; */
-
          
          table_lineBody.appendChild(table_Data)
          table_lineBody.appendChild(table_Data2);
