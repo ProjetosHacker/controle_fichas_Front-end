@@ -46,6 +46,10 @@ request.onload = function() {
          table_Data12 = document.createElement('td');
         const linkFichaDetails = document.createElement('a');
         const linkAlterarFicha = document.createElement('a');
+        const buttonDeleteFicha = document.createElement('a');
+        buttonDeleteFicha.setAttribute('class','material-icons');
+        buttonDeleteFicha.innerHTML = 'delete';
+
         linkAlterarFicha.setAttribute('class','material-icons');
         linkAlterarFicha.innerHTML = 'edit';
         linkFichaDetails.addEventListener('click', function() {
@@ -57,11 +61,19 @@ request.onload = function() {
           localStorage.setItem('numero_ficha', id_ficha);
         });
 
+        buttonDeleteFicha.addEventListener('click', function() {
+          id_ficha = element.NUMFICHA; 
+          localStorage.setItem('numero_ficha', id_ficha);
+        });
+        
         linkFichaDetails.href = '/DetalhesFicha.html';
-        linkAlterarFicha.href = '/editarficha.html'
+        linkAlterarFicha.href = '/editarficha.html';
+        buttonDeleteFicha.href = '/delete.html';
         linkFichaDetails.textContent = element.NUMFICHA
         table_Data.appendChild(linkAlterarFicha);
-        table_Data.appendChild(linkFichaDetails);        
+        table_Data.appendChild(linkFichaDetails);
+        table_Data.appendChild(buttonDeleteFicha);
+
         table_Data2.innerHTML = element.MATRICULA;
          table_Data3.innerHTML = element.NOMESERVIDOR;
          table_Data4.innerHTML = element.NOMEMAE;
