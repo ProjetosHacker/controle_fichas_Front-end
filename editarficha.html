@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="cadastrarficha.css"></script>
-    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.com/libraries/jquery.mask"></script>
     <title>Editar Ficha</title>
 
 </head>
 <body>
-  <h2 class="text-center alert alert-success">Cadastro de Ficha </h2> 
+  <h2 class="text-center alert alert-success">Editar Ficha </h2> 
   <br>
   <br>
 <form  id="Cadastrar_ficha">
@@ -19,7 +23,7 @@
   <div class="form-row">
   <div class="col-2">    
  <label>Matricula servidor: </label> 
- <input class="form-control" name="MATRICULA" value="121254" />
+ <input class="form-control" name="MATRICULA"  value="121254" />
 </div>
 <div class="col-10">
  <label>Nome servidor: </label> 
@@ -34,14 +38,15 @@
  </div>
  <div class="col-5">
  <label>Data de Nascimento: </label>
- <input class="form-control" name="DTNASC"/>
+ <input class="form-control" id="date" name="DTNASC" />
  </div>
  </div>
 
  <div class="form-row">
  <div class="col-4">  
  <label>CPF Servidor: </label> 
- <input class="form-control" name="CPF" value="00000000"/>
+ <input class="form-control" id="cpf" name="CPF"/>
+
 </div>
 </div>
 

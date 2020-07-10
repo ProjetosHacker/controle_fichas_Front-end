@@ -9,12 +9,13 @@ const rgInput = document.getElementsByName('RG')[0];
 const orgaoExpInput = document.getElementsByName('ORGAOEXP')[0];
 const ufInput = document.getElementsByName('UF')[0];
 
+
 var request = new XMLHttpRequest()
 var ficha_id = localStorage.getItem('numero_ficha');
 request.open('GET', 'http://localhost:3000/fichas/' + ficha_id, true)
 
 request.onload = function() {
-
+ 
   // Begin accessing JSON data here
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
@@ -24,7 +25,9 @@ request.onload = function() {
     nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);
     nomeMaeInput.setAttribute('value',element.NOMEMAE);    
     dataNascimentoInput.setAttribute('value',element.DTNASC);
+    $('#date').mask('00/00/0000');
     cpfServidorInput.setAttribute('value',element.CPF);
+    $('#cpf').mask('000.000.000-00');
     estanteInput.setAttribute('value',element.ESTANTE);
     prateleiraInput.setAttribute('value',element.PRATELEIRA);
     rgInput.setAttribute('value',element.RG);
