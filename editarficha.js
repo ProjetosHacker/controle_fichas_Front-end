@@ -23,8 +23,15 @@ request.onload = function() {
             
     matriculaInput.setAttribute('value',element.MATRICULA);
     nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);
-    nomeMaeInput.setAttribute('value',element.NOMEMAE);    
-    dataNascimentoInput.setAttribute('value',element.DTNASC);
+    nomeMaeInput.setAttribute('value',element.NOMEMAE);
+    const date = element.DTNASC.split('-');
+    console.log(date);
+    const dia = date[2].split('T');
+    console.log(dia);
+    const mes = date[1];
+    const ano = date[0];
+    const date_Mysql_format = `${dia[0]}/${mes}/${ano}`;
+    dataNascimentoInput.setAttribute('value',date_Mysql_format);
     $('#date').mask('00/00/0000');
     cpfServidorInput.setAttribute('value',element.CPF);
     $('#cpf').mask('000.000.000-00');
@@ -33,7 +40,6 @@ request.onload = function() {
     rgInput.setAttribute('value',element.RG);
     orgaoExpInput.setAttribute('value', element.ORGAOEXP);
     ufInput.setAttribute('value', element.UF);
-
      
     });
    }
@@ -89,7 +95,18 @@ let response = await fetch('http://localhost:3000/alterar/fichas/' + ficha_id, {
 }
 
 form.onsubmit = function(event) {
-    const formData = urlencodeFormData(new FormData(form)); 
+  // dataNascimentoInput.value= '15/05/1988';
+  cpf = cpfServidorInput.value;
+  const clearCpf = cpf.replace(/D/g,'');
+  console.log(clearCpf);
+  const date = dataNascimentoInput.value.split('/');
+  console.log(date);
+  const dia = date[0];
+  const mes = date[1];
+  const ano = date[2];
+  const date_Mysql_format = `${ano}/${mes}/${dia}`;
+  dataNascimentoInput.value = date_Mysql_format;
+  const formData = urlencodeFormData(new FormData(form));
   enviaDados(formData);
   event.preventDefault();
   window.location = '/fichas.html'
