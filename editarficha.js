@@ -39,8 +39,11 @@ request.onload = function() {
     prateleiraInput.setAttribute('value',element.PRATELEIRA);
     rgInput.setAttribute('value',element.RG);
     orgaoExpInput.setAttribute('value', element.ORGAOEXP);
-    ufInput.setAttribute('value', element.UF);
-     
+    console.log(ufInput);
+    for (i = 0; i < ufInput.length; i = i + 1) {
+      if (ufInput.options[i].value === element.UF) {
+        ufInput.selectedIndex = i;
+  }}
     });
    }
   }
