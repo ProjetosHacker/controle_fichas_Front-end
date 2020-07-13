@@ -28,8 +28,14 @@ request.onload = function() {
     matriculaInput.setAttribute('value',element.MATRICULA);
     nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);
     nomeMaeInput.setAttribute('value',element.NOMEMAE);
-    dataNascimentoInput.setAttribute('value',element.DTNASC);
+    const date = element.DTNASC.split('-');
+    const dia = date[2].split('T');
+    const mes = date[1];
+    const ano = date[0];
+    const date_Mysql_format = `${dia[0]}/${mes}/${ano}`;
+    dataNascimentoInput.setAttribute('value',date_Mysql_format);
     cpfServidorInput.setAttribute('value',element.CPF);
+    $('#cpf').mask('000.000.000-00');
     /* estanteInput.setAttribute('value',element.ESTANTE);
     prateleiraInput.setAttribute('value',element.PRATELEIRA);
     rgInput.setAttribute('value',element.RG);
