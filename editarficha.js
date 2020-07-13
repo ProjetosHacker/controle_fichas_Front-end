@@ -8,6 +8,7 @@ const prateleiraInput = document.getElementsByName('PRATELEIRA')[0];
 const rgInput = document.getElementsByName('RG')[0];
 const orgaoExpInput = document.getElementsByName('ORGAOEXP')[0];
 const ufInput = document.getElementsByName('UF')[0];
+let clearCPF = 0;
 
 
 var request = new XMLHttpRequest()
@@ -25,9 +26,7 @@ request.onload = function() {
     nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);
     nomeMaeInput.setAttribute('value',element.NOMEMAE);
     const date = element.DTNASC.split('-');
-    console.log(date);
     const dia = date[2].split('T');
-    console.log(dia);
     const mes = date[1];
     const ano = date[0];
     const date_Mysql_format = `${dia[0]}/${mes}/${ano}`;
@@ -35,6 +34,7 @@ request.onload = function() {
     $('#date').mask('00/00/0000');
     cpfServidorInput.setAttribute('value',element.CPF);
     $('#cpf').mask('000.000.000-00');
+ 
     estanteInput.setAttribute('value',element.ESTANTE);
     prateleiraInput.setAttribute('value',element.PRATELEIRA);
     rgInput.setAttribute('value',element.RG);
@@ -95,12 +95,10 @@ let response = await fetch('http://localhost:3000/alterar/fichas/' + ficha_id, {
 }
 
 form.onsubmit = function(event) {
-  // dataNascimentoInput.value= '15/05/1988';
-  cpf = cpfServidorInput.value;
-  const clearCpf = cpf.replace(/D/g,'');
-  console.log(clearCpf);
+  var str = cpfServidorInput.value;
+  clearCPF = str.replace(/[^\d]+/g,'');
+  cpfServidorInput.value = clearCPF;
   const date = dataNascimentoInput.value.split('/');
-  console.log(date);
   const dia = date[0];
   const mes = date[1];
   const ano = date[2];
