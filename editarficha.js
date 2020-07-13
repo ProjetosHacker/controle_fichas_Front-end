@@ -8,29 +8,42 @@ const prateleiraInput = document.getElementsByName('PRATELEIRA')[0];
 const rgInput = document.getElementsByName('RG')[0];
 const orgaoExpInput = document.getElementsByName('ORGAOEXP')[0];
 const ufInput = document.getElementsByName('UF')[0];
+let clearCPF = 0;
+
 
 var request = new XMLHttpRequest()
 var ficha_id = localStorage.getItem('numero_ficha');
 request.open('GET', 'http://localhost:3000/fichas/' + ficha_id, true)
 
 request.onload = function() {
-
+ 
   // Begin accessing JSON data here
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
     data.forEach(element => {
+            
     matriculaInput.setAttribute('value',element.MATRICULA);
     nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);
     nomeMaeInput.setAttribute('value',element.NOMEMAE);
-    dataNascimentoInput.setAttribute('value',element.DTNASC);
+    const date = element.DTNASC.split('-');
+    const dia = date[2].split('T');
+    const mes = date[1];
+    const ano = date[0];
+    const date_Mysql_format = `${dia[0]}/${mes}/${ano}`;
+    dataNascimentoInput.setAttribute('value',date_Mysql_format);
+    $('#date').mask('00/00/0000');
     cpfServidorInput.setAttribute('value',element.CPF);
+    $('#cpf').mask('000.000.000-00');
+ 
     estanteInput.setAttribute('value',element.ESTANTE);
     prateleiraInput.setAttribute('value',element.PRATELEIRA);
     rgInput.setAttribute('value',element.RG);
     orgaoExpInput.setAttribute('value', element.ORGAOEXP);
-    ufInput.setAttribute('value', element.UF);
-
-     
+    console.log(ufInput);
+    for (i = 0; i < ufInput.length; i = i + 1) {
+      if (ufInput.options[i].value === element.UF) {
+        ufInput.selectedIndex = i;
+  }}
     });
    }
   }
@@ -85,7 +98,16 @@ let response = await fetch('http://localhost:3000/alterar/fichas/' + ficha_id, {
 }
 
 form.onsubmit = function(event) {
-    const formData = urlencodeFormData(new FormData(form)); 
+  var str = cpfServidorInput.value;
+  clearCPF = str.replace(/[^\d]+/g,'');
+  cpfServidorInput.value = clearCPF;
+  const date = dataNascimentoInput.value.split('/');
+  const dia = date[0];
+  const mes = date[1];
+  const ano = date[2];
+  const date_Mysql_format = `${ano}/${mes}/${dia}`;
+  dataNascimentoInput.value = date_Mysql_format;
+  const formData = urlencodeFormData(new FormData(form));
   enviaDados(formData);
   event.preventDefault();
   window.location = '/fichas.html'
