@@ -65,4 +65,7 @@ form.onsubmit = function(event) {
     const formData = urlencodeFormData(new FormData(form)); 
   enviaDados(formData);
   event.preventDefault();
+  alert("Ficha Cadastrada com sucesso !");
+  window.location = '/fichas.html'
+
 }
