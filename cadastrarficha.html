@@ -19,29 +19,29 @@
   <div class="form-row">
   <div class="col-2">    
  <label>Matricula servidor: </label> 
- <input class="form-control" type="number" name="MATRICULA" placeholder="Numero Matr." />
+ <input class="form-control" type="number" name="MATRICULA" placeholder="Numero Matr." required/>
 </div>
 <div class="col-10">
  <label>Nome servidor: </label> 
- <input class="form-control" name="NOMESERVIDOR"/>
+ <input class="form-control" name="NOMESERVIDOR" required/>
 </div>
 </div>
 
 <div class="form-row">
  <div class="col-5">
  <label>Nome da Mãe: </label> 
- <input class="form-control" name="NOMEMAE"/>
+ <input class="form-control" name="NOMEMAE" required/>
  </div>
  <div class="col-5">
  <label>Data de Nascimento: </label>
- <input class="form-control" id="date" type="text" name="DTNASC" />
+ <input class="form-control" id="date" type="text" name="DTNASC" required />
  </div>
  </div>
 
  <div class="form-row">
  <div class="col-4">  
  <label>CPF Servidor: </label> 
- <input class="form-control" name="CPF" id="cpf" />
+ <input class="form-control" name="CPF" id="cpf" required />
 </div>
 </div>
 
@@ -49,11 +49,11 @@
  <!-- CODLOCAL FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
  <div class="col">
  <label>Estante :  </label> 
- <input class="form-control" type="text" name="ESTANTE"/>
+ <input class="form-control" type="text" name="ESTANTE" required/>
  </div>
  <div class="col"> 
  <label>Prateleira:  </label> 
- <input class="form-control" type="text" name="PRATELEIRA"/>
+ <input class="form-control" type="text" name="PRATELEIRA" required/>
  <!-- SITFICHA FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
  <!-- CODUSUEMP FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
 </div>
@@ -62,15 +62,16 @@
 <div class="form-row">
   <div class="col">  
  <label>RG Servidor:  </label> 
- <input class="form-control"  type="text" name="RG"/>
+ <input class="form-control"  type="text" name="RG" required/>
 </div>
 <div class="col">   
 <label>Orgão Expedidor:  </label> 
- <input class="form-control"  type="text" name="ORGAOEXP"/>
+ <input class="form-control"  type="text" name="ORGAOEXP" required/>
  </div>
  <div class="col">
  <label>UF: </label> 
- <select name="UF" class="form-control">
+ <select name="UF" class="form-control" required>
+  <option value=" ">  </option>
   <option value="AC"> AC </option>
   <option value="AL"> AL </option> 
   <option value="AP"> AP </option> 

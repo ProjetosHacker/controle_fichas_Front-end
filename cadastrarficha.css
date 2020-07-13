@@ -2,3 +2,23 @@
 .hidden {
   display: none;
 }
+
+input:valid {
+  border-color: green;
+  border-width: 4px;
+}
+
+input:invalid {
+  border-color: red;
+  border-width: 4px;
+}
+
+select:valid {
+  border-color: green;
+  border-width: 4px;
+}
+
+select:invalid {
+  border-color: red;
+  border-width: 4px;
+}

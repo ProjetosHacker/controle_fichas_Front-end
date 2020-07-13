@@ -19,29 +19,29 @@
   <div class="form-row">
   <div class="col-2">    
  <label>Matricula servidor: </label> 
- <input class="form-control" name="MATRICULA"   />
+ <input class="form-control" name="MATRICULA" maxlength="12" required />
 </div>
 <div class="col-10">
  <label>Nome servidor: </label> 
- <input class="form-control" name="NOMESERVIDOR" />
+ <input class="form-control" name="NOMESERVIDOR" maxlength="60" required />
 </div>
 </div>
 
 <div class="form-row">
  <div class="col-5">
  <label>Nome da Mãe: </label> 
- <input class="form-control" name="NOMEMAE"/>
+ <input class="form-control" name="NOMEMAE" maxlength="60" required/>
  </div>
  <div class="col-5">
  <label>Data de Nascimento: </label>
- <input class="form-control" id="date" name="DTNASC" />
+ <input class="form-control" id="date" name="DTNASC" required />
  </div>
  </div>
 
  <div class="form-row">
  <div class="col-4">  
  <label>CPF Servidor: </label> 
- <input class="form-control" id="cpf" name="CPF"/>
+ <input class="form-control" id="cpf" name="CPF" data-ls-module="charCounter" maxlength="14" required/>
 
 </div>
 </div>
@@ -50,11 +50,11 @@
  <!-- CODLOCAL FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
  <div class="col">
  <label>Estante :  </label> 
- <input class="form-control" type="text" name="ESTANTE" />
+ <input class="form-control" type="text" name="ESTANTE" maxlength="2" required/>
  </div>
  <div class="col"> 
  <label>Prateleira:  </label> 
- <input class="form-control" type="text" name="PRATELEIRA"/>
+ <input class="form-control" type="text" name="PRATELEIRA" maxlength="2" required/>
  <!-- SITFICHA FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
  <!-- CODUSUEMP FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
 </div>
@@ -63,11 +63,11 @@
 <div class="form-row">
   <div class="col">  
  <label>RG Servidor:  </label> 
- <input class="form-control"  type="text" name="RG"/>
+ <input class="form-control"  type="text" name="RG" maxlength="8" required />
 </div>
 <div class="col">   
 <label>Orgão Expedidor:  </label> 
- <input class="form-control"  type="text" name="ORGAOEXP" />
+ <input class="form-control"  type="text" name="ORGAOEXP" maxlength="4" required/>
  </div>
  <div class="col">
  <label>UF: </label> 
