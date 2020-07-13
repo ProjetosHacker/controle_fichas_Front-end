@@ -23,8 +23,16 @@ rootDiv.appendChild(codusuempInput);
 
 const form = document.getElementById('Cadastrar_ficha');
 window.onload = function() {
+  $('#date').datepicker({
+    isRTL: false,
+    todayBtn: "linked",
+    language: "pt-BR",
+    format: 'dd/mm/yyyy',
+    toggleActive: true
+});
   $('#date').mask('00/00/0000');
   $('#cpf').mask('000.000.000-00');
+ 
 }
 
 //take a multi-part form data type and transform in x-www-url-form-encode
