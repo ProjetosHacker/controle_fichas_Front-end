@@ -1,4 +1,13 @@
+var request = new XMLHttpRequest()
+var ficha_id = localStorage.getItem('numero_ficha');
+request.open('GET', 'http://localhost:3000/estantes/' , true)
 
+request.onload = function() {
+  var data = JSON.parse(this.response)
+  data.forEach(element => 
+    console.log(element.NUMESTANTE));
+}
+request.send();
 const codlocalInput = document.createElement('input');
 const sitfichaInput = document.createElement('input');
 const codusuempInput = document.createElement('input');
@@ -21,8 +30,10 @@ rootDiv.appendChild(codlocalInput);
 rootDiv.appendChild(sitfichaInput);
 rootDiv.appendChild(codusuempInput);
 
+
+
 const form = document.getElementById('Cadastrar_ficha');
-window.onload = function() {
+window.onload = function() {  
   $('#date').datepicker({
     isRTL: false,
     todayBtn: "linked",
@@ -31,8 +42,7 @@ window.onload = function() {
     toggleActive: true
 });
   $('#date').mask('00/00/0000');
-  $('#cpf').mask('000.000.000-00');
- 
+  $('#cpf').mask('000.000.000-00'); 
 }
 
 //take a multi-part form data type and transform in x-www-url-form-encode
