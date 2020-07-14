@@ -29,9 +29,14 @@ request.onload = function() {
         root.appendChild(document.createElement('label')).innerText=" Nome da Mãe: ";
         root.appendChild(document.createElement('label')).innerHTML= '&nbsp;&nbsp;' +element.NOMEMAE;
         root.appendChild(document.createElement('br'))
-
+        
+        const date = element.DTNASC.split('-');
+        const dia = date[2].split('T');
+        const mes = date[1];
+        const ano = date[0];
+        const date_Mysql_format = `${dia[0]}/${mes}/${ano}`;
         root.appendChild(document.createElement('label')).innerText=" Data de Nascimento: ";
-        root.appendChild(document.createElement('label')).innerHTML= '&nbsp;&nbsp;' + element.DTNASC;
+        root.appendChild(document.createElement('label')).innerHTML= '&nbsp;&nbsp;' + date_Mysql_format;
         root.appendChild(document.createElement('br'))
 
         root.appendChild(document.createElement('label')).innerText=" CPF: ";

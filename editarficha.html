@@ -19,7 +19,7 @@
   <div class="form-row">
   <div class="col-2">    
  <label>Matricula servidor: </label> 
- <input class="form-control" name="MATRICULA" maxlength="12" required />
+ <input class="form-control" maxlength="12" type="text" name="MATRICULA" placeholder="Numero Matr." required/>
 </div>
 <div class="col-10">
  <label>Nome servidor: </label> 
@@ -28,79 +28,72 @@
 </div>
 
 <div class="form-row">
- <div class="col-5">
+ <div class="col-8">
  <label>Nome da Mãe: </label> 
  <input class="form-control" name="NOMEMAE" maxlength="60" required/>
  </div>
- <div class="col-5">
+ <div class="col-2">
  <label>Data de Nascimento: </label>
  <input class="form-control" id="date" name="DTNASC" required />
  </div>
+ <div class="col-1">
+  <label>Estante :  </label> 
+  <input class="form-control" type="text" name="ESTANTE" maxlength="2" required/>
+  </div>
+  <div class="col-1"> 
+  <label>Prateleira:  </label> 
+  <input class="form-control" type="text" name="PRATELEIRA" maxlength="2" required/>
+  <!-- SITFICHA FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
+  <!-- CODUSUEMP FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
+ </div>
+
  </div>
 
  <div class="form-row">
- <div class="col-4">  
+ <div class="col-2">  
  <label>CPF Servidor: </label> 
- <input class="form-control" id="cpf" name="CPF" data-ls-module="charCounter" maxlength="14" required/>
-
+ <input class="form-control" id="cpf" type="text" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"\ name="CPF" data-ls-module="charCounter" maxlength="14" required/>
 </div>
-</div>
-
-<div class="form-row">
- <!-- CODLOCAL FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
- <div class="col">
- <label>Estante :  </label> 
- <input class="form-control" type="text" name="ESTANTE" maxlength="2" required/>
+<div class="col-2">  
+  <label>RG Servidor:  </label> 
+  <input class="form-control"  type="text" name="RG" maxlength="8" required />
  </div>
- <div class="col"> 
- <label>Prateleira:  </label> 
- <input class="form-control" type="text" name="PRATELEIRA" maxlength="2" required/>
- <!-- SITFICHA FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
- <!-- CODUSUEMP FOI DEIXADO FORA DOS INPUTS ENTÃO TEM QUE SER ENVIADO PROGRAMATICAMENTE  -->
-</div>
-</div>
-
-<div class="form-row">
-  <div class="col">  
- <label>RG Servidor:  </label> 
- <input class="form-control"  type="text" name="RG" maxlength="8" required />
-</div>
-<div class="col">   
-<label>Orgão Expedidor:  </label> 
- <input class="form-control"  type="text" name="ORGAOEXP" maxlength="4" required/>
- </div>
- <div class="col">
- <label>UF: </label> 
- <select name="UF" class="form-control">
-  <option value="AC"> AC </option>
-  <option value="AL"> AL </option> 
-  <option value="AP"> AP </option> 
-  <option value="AM"> AM </option> 
-  <option value="BA"> BA </option> 
-  <option value="CE"> CE </option> 
-  <option value="DF"> DF </option> 
-  <option value="ES"> ES </option> 
-  <option value="GO"> GO </option> 
-  <option value="MA"> MA </option> 
-  <option value="MT"> MT </option> 
-  <option value="MS"> MS </option> 
-  <option value="MG"> MG </option> 
-  <option value="PA"> PA </option>  
-  <option value="PB"> PB </option> 
-  <option value="PR"> PR </option> 
-  <option value="PE"> PE </option> 
-  <option value="PI"> PI </option> 
-  <option value="RJ"> RJ </option> 
-  <option value="RN"> RN </option> 
-  <option value="RS"> RS </option> 
-  <option value="RO"> RO </option> 
-  <option value="RR"> RR </option> 
-  <option value="SC"> SC </option> 
-  <option value="SP"> SP </option> 
-  <option value="SE"> SE </option> 
-  <option value="TO"> TO </option> 
-</select>
- </div>
+ <div class="col-1">   
+ <label>Orgão Exp.:  </label> 
+  <input class="form-control"  type="text" name="ORGAOEXP" maxlength="4" required/>
+  </div>
+  <div class="col-1">
+  <label>UF: </label> 
+  <select name="UF" class="form-control">
+   <option value="AC"> AC </option>
+   <option value="AL"> AL </option> 
+   <option value="AP"> AP </option> 
+   <option value="AM"> AM </option> 
+   <option value="BA"> BA </option> 
+   <option value="CE"> CE </option> 
+   <option value="DF"> DF </option> 
+   <option value="ES"> ES </option> 
+   <option value="GO"> GO </option> 
+   <option value="MA"> MA </option> 
+   <option value="MT"> MT </option> 
+   <option value="MS"> MS </option> 
+   <option value="MG"> MG </option> 
+   <option value="PA"> PA </option>  
+   <option value="PB"> PB </option> 
+   <option value="PR"> PR </option> 
+   <option value="PE"> PE </option> 
+   <option value="PI"> PI </option> 
+   <option value="RJ"> RJ </option> 
+   <option value="RN"> RN </option> 
+   <option value="RS"> RS </option> 
+   <option value="RO"> RO </option> 
+   <option value="RR"> RR </option> 
+   <option value="SC"> SC </option> 
+   <option value="SP"> SP </option> 
+   <option value="SE"> SE </option> 
+   <option value="TO"> TO </option> 
+ </select>
+  </div>
 </div>
 <br>
  <button value="" class="btn btn-success" name="button_cadastrar"> Editar Ficha </button>

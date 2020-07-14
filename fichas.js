@@ -78,17 +78,21 @@ request.onload = function() {
          table_Data3.innerHTML = element.NOMESERVIDOR;
          table_Data4.innerHTML = element.NOMEMAE;
         // Tratando e formatando a data que vem no formato do mysql => 1985-05-15T04:00:00.000Z
+        if(element.DTNASC !== null ) {
         elementos_data = element.DTNASC.split("-");
         dia = elementos_data[2].split('T');
         mes = elementos_data[1];
         ano = elementos_data[0];
          table_Data5.innerHTML = `${dia[0]}/${mes}/${ano}`;
           // Tratando e formatando a exibição do cpf na tela
-         cpf_digitos = [...element.CPF];        
-         table_Data6.innerHTML = `${cpf_digitos[0]}${cpf_digitos[1]}${cpf_digitos[2]}
+        }
+       /*   cpf_zeros = [0,0,0,0,0,0,0,0,0,0,0];
+         cpf_digitos = element.CPF ? [...element.CPF] : [...cpf_zeros];        
+         `${cpf_digitos[0]}${cpf_digitos[1]}${cpf_digitos[2]}
          .${cpf_digitos[3]}${cpf_digitos[4]}${cpf_digitos[5]}.
          ${cpf_digitos[6]}${cpf_digitos[7]}${cpf_digitos[8]}
-         -${cpf_digitos[9]}${cpf_digitos[10]}`;
+      -${cpf_digitos[9]}${cpf_digitos[10]}`; */
+      table_Data6.innerHTML =  element.CPF;
          table_Data7.innerHTML = element.CODLOCAL;
          table_Data8.innerHTML = element.ESTANTE;
          table_Data9.innerHTML = element.PRATELEIRA;
