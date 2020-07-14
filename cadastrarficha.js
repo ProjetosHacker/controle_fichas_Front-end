@@ -3,10 +3,22 @@ var ficha_id = localStorage.getItem('numero_ficha');
 request.open('GET', 'http://localhost:3000/estantes/' , true)
 
 request.onload = function() {
-  var data = JSON.parse(this.response)
+  let estante_unicas= [];
+  const estantes = [];
+  var data = JSON.parse(this.response);
   data.forEach(element => 
-    console.log(element.NUMESTANTE));
+    estantes.push(element.NUMESTANTE));
+    estante_unicas = [...new Set(estantes)];
+   
+ estante_select = document.getElementsByName("ESTANTE")[0]; 
+estante_unicas.forEach(element => {
+  opt = document.createElement("option");
+  opt.value = element;
+  opt.textContent = element;
+  estante_select.appendChild(opt);
+});
 }
+
 request.send();
 const codlocalInput = document.createElement('input');
 const sitfichaInput = document.createElement('input');
