@@ -17,7 +17,9 @@ estante_unicas.forEach(element => {
   opt.textContent = element;
   estante_select.appendChild(opt);
 });
+ 
 }
+
 
 request.send();
 const codlocalInput = document.createElement('input');
@@ -48,7 +50,6 @@ const form = document.getElementById('Cadastrar_ficha');
 window.onload = function() {  
   $('#date').datepicker({
     isRTL: false,
-    todayBtn: "linked",
     language: "pt-BR",
     format: 'dd/mm/yyyy',
     toggleActive: true
