@@ -48,12 +48,12 @@ request.onload = function() {
           localStorage.setItem('cod_Local_Estante', codLocal);
         });
         
-        linkFichaDetails.href = 'DetalhesFicha.html';
+        // linkFichaDetails.href = 'DetalhesFicha.html';
         linkAlterarFicha.href = 'editarEstantes.html';
         buttonDeleteFicha.href = 'deleteEstantes.html';
         linkFichaDetails.textContent = element.CODLOCAL
-        table_Data.appendChild(linkAlterarFicha);
         table_Data.appendChild(linkFichaDetails);
+        table_Data.appendChild(linkAlterarFicha);
         table_Data.appendChild(buttonDeleteFicha);
 
         table_Data2.innerHTML = element.NUMESTANTE;
