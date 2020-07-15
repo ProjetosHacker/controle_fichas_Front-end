@@ -39,6 +39,10 @@ let response = await fetch('http://localhost:3000/inserir/estante', {
   alert(result.message);
 }
 
+const button_voltar = document.getElementsByName('button_voltar')[0];
+button_voltar.addEventListener('click', function() {
+  window.location = 'estantes.html';
+});
 form.onsubmit = function(event) {
   const formData = urlencodeFormData(new FormData(form)); 
   enviaDados(formData);

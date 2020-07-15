@@ -103,6 +103,11 @@ let response = await fetch('http://localhost:3000/alterar/fichas/' + ficha_id, {
   alert(result.message);
 }
 
+const button_voltar = document.getElementsByName('button_voltar')[0];
+button_voltar.addEventListener('click', function() {
+  window.location = 'fichas.html';
+});
+
 form.onsubmit = function(event) {
   var str = cpfServidorInput.value;
   clearCPF = str.replace(/[^\d]+/g,'');
