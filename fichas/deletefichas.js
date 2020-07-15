@@ -66,7 +66,7 @@ request.onload = function() {
       alert("Registro excluído com sucesso !");
      
     } 
-    window.location = '/fichas.html'
+    window.location = 'fichas.html'
  }
 
 

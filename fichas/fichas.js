@@ -68,7 +68,7 @@ request.onload = function() {
         
         linkFichaDetails.href = 'DetalhesFicha.html';
         linkAlterarFicha.href = 'editarficha.html';
-        buttonDeleteFicha.href = 'delete.html';
+        buttonDeleteFicha.href = 'deletefichas.html';
         linkFichaDetails.textContent = element.NUMFICHA
         table_Data.appendChild(linkAlterarFicha);
         table_Data.appendChild(linkFichaDetails);
