@@ -47,7 +47,7 @@ let response = await fetch('http://localhost:3000/alterar/estante/' + codLocal, 
   });
   
   let result = await response;
-  alert(result.message);
+  return result;
 }
 
 const button_voltar = document.getElementsByName('button_voltar')[0];
@@ -56,8 +56,9 @@ button_voltar.addEventListener('click', function() {
 });
 form.onsubmit = function(event) {
   const formData = urlencodeFormData(new FormData(form));
-  enviaDados(formData);
+  const result = enviaDados(formData);
+
   event.preventDefault();
-  alert("Estante Alterada com sucesso !");
-  window.location = 'estantes.html'
+  console.log(result.then(data => console.log(data.status)));
+  // window.location = 'estantes.html';
 }

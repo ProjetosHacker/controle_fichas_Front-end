@@ -36,7 +36,7 @@ let response = await fetch('http://localhost:3000/inserir/estante', {
   });
   
   let result = await response;
-  alert(result.message);
+  return result;
 }
 
 const button_voltar = document.getElementsByName('button_voltar')[0];
@@ -45,9 +45,10 @@ button_voltar.addEventListener('click', function() {
 });
 form.onsubmit = function(event) {
   const formData = urlencodeFormData(new FormData(form)); 
-  enviaDados(formData);
+  const result = enviaDados(formData);
+  console.log(result.then(data => console.log(data)));
   event.preventDefault();
   alert("Estante Cadastrada com sucesso !");
-  window.location = 'estantes.html'
+  // window.location = 'estantes.html'
 
 }
