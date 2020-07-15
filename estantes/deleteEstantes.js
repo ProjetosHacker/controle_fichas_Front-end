@@ -1,5 +1,5 @@
 var request = new XMLHttpRequest()
-var codLocal = 2;
+var codLocal = localStorage.getItem('cod_Local_Estante');
 
 const codLocalInput = document.getElementsByName('CODLOCAL')[0];
 const numEstanteInput = document.getElementsByName('NUMESTANTE')[0];

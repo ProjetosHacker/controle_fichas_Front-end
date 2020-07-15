@@ -3,11 +3,12 @@ const numEstanteInput = document.getElementsByName('NUMESTANTE')[0];
 const numPrateleiraInput = document.getElementsByName('NUMPRATELEIRA')[0];
 
 
+var codLocal = localStorage.getItem('cod_Local_Estante');
 
 
 var request = new XMLHttpRequest()
 // var ficha_id = localStorage.getItem('numero_ficha');
-request.open('GET', 'http://localhost:3000/estantes/' + 1, true)
+request.open('GET', 'http://localhost:3000/estantes/' + codLocal, true)
 
 request.onload = function() { 
   // Begin accessing JSON data here
@@ -37,7 +38,7 @@ function urlencodeFormData(fd){
 }
 
 async function enviaDados(formData) {
-let response = await fetch('http://localhost:3000/alterar/estante/' + 1, {
+let response = await fetch('http://localhost:3000/alterar/estante/' + codLocal, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
