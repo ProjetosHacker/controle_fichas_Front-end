@@ -48,7 +48,6 @@ form.onsubmit = function(event) {
   const result = enviaDados(formData);
   console.log(result.then(data => console.log(data)));
   event.preventDefault();
-  alert("Estante Cadastrada com sucesso !");
-  // window.location = 'estantes.html'
+  window.location = 'estantes.html'
 
 }

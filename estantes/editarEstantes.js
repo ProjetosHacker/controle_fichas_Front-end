@@ -60,5 +60,5 @@ form.onsubmit = function(event) {
 
   event.preventDefault();
   console.log(result.then(data => console.log(data.status)));
-  // window.location = 'estantes.html';
+  window.location = 'estantes.html';
 }
