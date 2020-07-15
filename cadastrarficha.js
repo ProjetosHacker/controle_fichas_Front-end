@@ -1,3 +1,5 @@
+estante_select = document.getElementsByName("ESTANTE")[0];
+const estante_data = [];
 var request = new XMLHttpRequest()
 var ficha_id = localStorage.getItem('numero_ficha');
 request.open('GET', 'http://localhost:3000/estantes/' , true)
@@ -6,19 +8,35 @@ request.onload = function() {
   let estante_unicas= [];
   const estantes = [];
   var data = JSON.parse(this.response);
-  data.forEach(element => 
-    estantes.push(element.NUMESTANTE));
+  data.forEach(element => {
+    estante_data.push(element);
+    estantes.push(element.NUMESTANTE)});
     estante_unicas = [...new Set(estantes)];
    
- estante_select = document.getElementsByName("ESTANTE")[0]; 
+   
+
 estante_unicas.forEach(element => {
   opt = document.createElement("option");
   opt.value = element;
   opt.textContent = element;
   estante_select.appendChild(opt);
-});
- 
+}); 
 }
+
+const prateleira_select = document.getElementsByName("PRATELEIRA")[0];
+estante_select.addEventListener('change',function(){ 
+localStorage.setItem('estante_selected', this.value)
+const estante_selected_id = localStorage.getItem('estante_selected');
+const prateleiras_filtradas = estante_data.filter(element =>  element.NUMESTANTE == estante_selected_id );
+prateleira_select.innerHTML = "";
+prateleiras_filtradas.forEach(optionValue => {
+  opt = document.createElement("option");
+  opt.value = optionValue.NUMPRATELEIRA;
+  opt.textContent = optionValue.NUMPRATELEIRA;
+  prateleira_select.appendChild(opt);
+  
+console.log(prateleiras_filtradas);
+})});
 
 
 request.send();
