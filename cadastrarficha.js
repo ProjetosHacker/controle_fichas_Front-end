@@ -11,8 +11,7 @@ request.onload = function() {
   data.forEach(element => {
     estante_data.push(element);
     estantes.push(element.NUMESTANTE)});
-    estante_unicas = [...new Set(estantes)];
-   
+    estante_unicas = [...new Set(estantes)];   
    
 
 estante_unicas.forEach(element => {
@@ -34,9 +33,7 @@ prateleiras_filtradas.forEach(optionValue => {
   opt.value = optionValue.NUMPRATELEIRA;
   opt.textContent = optionValue.NUMPRATELEIRA;
   prateleira_select.appendChild(opt);
-  
-console.log(prateleiras_filtradas);
-})});
+  })});
 
 
 request.send();
