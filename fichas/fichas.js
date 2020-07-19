@@ -1,4 +1,15 @@
-
+var request_estante = new XMLHttpRequest();
+let estantes_list = [];
+request_estante.open('GET', 'http://localhost:3000/estantes', true);
+request_estante.onload = function() {
+//  var data = JSON.parse(this.response);
+ 
+}
+request_estante.onreadystatechange = function() {
+  var data = JSON.parse(this.response);
+  estantes_list.push(data);
+}
+request_estante.send();
 
 var request = new XMLHttpRequest()
 // let id_ficha = null;
@@ -13,7 +24,6 @@ request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     const root = document.getElementById('root');
     root.removeChild(document.getElementById('loading'))
-
     const table = document.createElement('table');
     table.setAttribute('class', 'table')
     table_line = document.createElement('tr');
@@ -30,7 +40,10 @@ request.onload = function() {
     table_line.appendChild(document.createElement('th')).innerHTML='RG';
     table_line.appendChild(document.createElement('th')).innerHTML='Orgão Expedidor';
     table_line.appendChild(document.createElement('th')).innerHTML='UF';
-    data.forEach(element => {
+    data.forEach((element) => {
+       const estante_Detail =   estantes_list[0].filter(estante => 
+          estante.codlocal === element.CODLOCAL);
+
          table_lineBody = document.createElement('tr');
          table_Data = document.createElement('td');
          table_Data2 = document.createElement('td');
@@ -86,16 +99,19 @@ request.onload = function() {
          table_Data5.innerHTML = `${dia[0]}/${mes}/${ano}`;
           // Tratando e formatando a exibição do cpf na tela
         }
-       /*   cpf_zeros = [0,0,0,0,0,0,0,0,0,0,0];
+         cpf_zeros = [0,0,0,0,0,0,0,0,0,0,0];
          cpf_digitos = element.CPF ? [...element.CPF] : [...cpf_zeros];        
          `${cpf_digitos[0]}${cpf_digitos[1]}${cpf_digitos[2]}
          .${cpf_digitos[3]}${cpf_digitos[4]}${cpf_digitos[5]}.
          ${cpf_digitos[6]}${cpf_digitos[7]}${cpf_digitos[8]}
-      -${cpf_digitos[9]}${cpf_digitos[10]}`; */
-      table_Data6.innerHTML =  element.CPF;
+      -${cpf_digitos[9]}${cpf_digitos[10]}`; 
+      table_Data6.innerHTML =  `${cpf_digitos[0]}${cpf_digitos[1]}${cpf_digitos[2]}
+      .${cpf_digitos[3]}${cpf_digitos[4]}${cpf_digitos[5]}.
+      ${cpf_digitos[6]}${cpf_digitos[7]}${cpf_digitos[8]}
+   -${cpf_digitos[9]}${cpf_digitos[10]}`; ;
          table_Data7.innerHTML = element.CODLOCAL;
-         table_Data8.innerHTML = element.ESTANTE;
-         table_Data9.innerHTML = element.PRATELEIRA;
+         table_Data8.innerHTML = estante_Detail[0].numestante;
+         table_Data9.innerHTML = estante_Detail[0].numprateleira;
          table_Data10.innerHTML = element.RG;
          table_Data11.innerHTML = element.ORGAOEXP;
          table_Data12.innerHTML = element.UF;         
