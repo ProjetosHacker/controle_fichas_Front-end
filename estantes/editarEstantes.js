@@ -15,9 +15,9 @@ request.onload = function() {
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
     data.forEach(element => {
-      codLocalInput.setAttribute('value',element.CODLOCAL);
-      numEstanteInput.setAttribute('value', element.NUMESTANTE);
-      numPrateleiraInput.setAttribute('value', element.NUMPRATELEIRA);
+      codLocalInput.setAttribute('value',element.codlocal);
+      numEstanteInput.setAttribute('value', element.numestante);
+      numPrateleiraInput.setAttribute('value', element.numprateleira);
     });
    }
   }

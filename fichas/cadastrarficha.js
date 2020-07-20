@@ -1,63 +1,57 @@
-estante_select = document.getElementsByName("ESTANTE")[0];
-const estante_data = [];
-var request = new XMLHttpRequest()
-var ficha_id = localStorage.getItem('numero_ficha');
-request.open('GET', 'http://localhost:3000/estantes/' , true)
+var request_estante = new XMLHttpRequest();
+let estantes_list = [];
+const codLocalSelect = document.getElementsByName('CODLOCAL')[0];
+request_estante.open('GET', 'http://localhost:3000/estantes', true);
+request_estante.onload = function() {
+var data = JSON.parse(this.response);
+data.forEach(element => 
+  estantes_list.push(element)
+  )
+  estantes_list.forEach(estante => {
+    console.log(estante.codlocal)
+    opt = document.createElement("option");
+    opt.value = estante.codlocal;
+    opt.textContent = `CodLocal: ${estante.codlocal} ||  Estante: ${estante.numestante} || Prateleira: ${estante.numprateleira}`;
+    codLocalSelect.appendChild(opt); 
+  } )  
+}
 
-request.onload = function() {
-  let estante_unicas= [];
-  const estantes = [];
-  var data = JSON.parse(this.response);
-  data.forEach(element => {
-    estante_data.push(element);
-    estantes.push(element.NUMESTANTE)});
-    estante_unicas = [...new Set(estantes)];   
-   
+codLocalSelect.addEventListener('change', function(event) {
+ alert(event.target.value);
+});
 
-estante_unicas.forEach(element => {
+request_estante.send();
+// const estante_list_flat = estantes_list.flat(1);
+
+/* estantes_list.forEach(element => {
+/*   console.log("teste");
   opt = document.createElement("option");
   opt.value = element;
   opt.textContent = element;
-  estante_select.appendChild(opt);
-}); 
-}
-
-const prateleira_select = document.getElementsByName("PRATELEIRA")[0];
-estante_select.addEventListener('change',function(){ 
-localStorage.setItem('estante_selected', this.value)
-const estante_selected_id = localStorage.getItem('estante_selected');
-const prateleiras_filtradas = estante_data.filter(element =>  element.NUMESTANTE == estante_selected_id );
-prateleira_select.innerHTML = "";
-prateleiras_filtradas.forEach(optionValue => {
-  opt = document.createElement("option");
-  opt.value = optionValue.NUMPRATELEIRA;
-  opt.textContent = optionValue.NUMPRATELEIRA;
-  prateleira_select.appendChild(opt);
-  })});
-
-
-request.send();
+  codLocalSelect.appendChild(opt); 
+});  */
 const codlocalInput = document.createElement('input');
 const sitfichaInput = document.createElement('input');
 const codusuempInput = document.createElement('input');
 const rootDiv = document.getElementById('root');
 
+/* 
 codlocalInput.setAttribute('name','CODLOCAL');
 codlocalInput.setAttribute('value','1');
 codlocalInput.setAttribute('class','hidden');
-
+ */
 sitfichaInput.setAttribute('name','SITFICHA');
 sitfichaInput.setAttribute('value','1');
-sitfichaInput.setAttribute('class','hidden');
+/* sitfichaInput.setAttribute('class','hidden'); */
 
 codusuempInput.setAttribute('name','CODUSUEMP');
 codusuempInput.setAttribute('value','1');
 codusuempInput.setAttribute('class','hidden');
 
 
-rootDiv.appendChild(codlocalInput);
+// rootDiv.appendChild(codlocalInput);
 rootDiv.appendChild(sitfichaInput);
-rootDiv.appendChild(codusuempInput);
+// rootDiv.appendChild(codusuempInput);
 
 
 

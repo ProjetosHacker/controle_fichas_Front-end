@@ -1,10 +1,30 @@
+var request_estante = new XMLHttpRequest();
+let estantes_list = [];
+const codLocalSelect = document.getElementsByName('CODLOCAL')[0];
+request_estante.open('GET', 'http://localhost:3000/estantes', true);
+request_estante.onload = function() {
+var data = JSON.parse(this.response);
+data.forEach(element => 
+  estantes_list.push(element)
+  )
+  estantes_list.forEach(estante => {
+    opt = document.createElement("option");
+    opt.value = estante.codlocal;
+    opt.textContent = `CodLocal: ${estante.codlocal} ||  Estante: ${estante.numestante} || Prateleira: ${estante.numprateleira}`;
+    codLocalSelect.appendChild(opt); 
+  } )  
+}
+
+codLocalSelect.addEventListener('change', function(event) {
+});
+
+request_estante.send();
+
 const matriculaInput = document.getElementsByName('MATRICULA')[0];
 const nomeServidorInput = document.getElementsByName('NOMESERVIDOR')[0];
 const nomeMaeInput = document.getElementsByName('NOMEMAE')[0];
 const dataNascimentoInput = document.getElementsByName('DTNASC')[0];
 const cpfServidorInput = document.getElementsByName('CPF')[0];
-const estanteInput = document.getElementsByName('ESTANTE')[0];
-const prateleiraInput = document.getElementsByName('PRATELEIRA')[0];
 const rgInput = document.getElementsByName('RG')[0];
 const orgaoExpInput = document.getElementsByName('ORGAOEXP')[0];
 const ufInput = document.getElementsByName('UF')[0];
@@ -27,7 +47,10 @@ request.onload = function() {
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
     data.forEach(element => {
-            
+      codLocalSelect.selectedIndex = element.CODLOCAL;
+     console.log(codLocalSelect.options[1].value + " = " +  element.CODLOCAL +  " = " + codLocalSelect.selectedIndex );        
+           
+     
     matriculaInput.setAttribute('value',element.MATRICULA);
     nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);
     nomeMaeInput.setAttribute('value',element.NOMEMAE);
@@ -40,26 +63,26 @@ request.onload = function() {
     $('#date').mask('00/00/0000');
     cpfServidorInput.setAttribute('value',element.CPF);
     $('#cpf').mask('000.000.000-00');
- 
-    estanteInput.setAttribute('value',element.ESTANTE);
-    prateleiraInput.setAttribute('value',element.PRATELEIRA);
     rgInput.setAttribute('value',element.RG);
     orgaoExpInput.setAttribute('value', element.ORGAOEXP);
     console.log(ufInput);
     for (i = 0; i < ufInput.length; i = i + 1) {
       if (ufInput.options[i].value === element.UF) {
         ufInput.selectedIndex = i;
-  }}
-    });
+  }     
+}
+  
+ 
+});
    }
   }
   request.send();
-const codlocalInput = document.createElement('input');
+/* const codlocalInput = document.createElement('input');
 const sitfichaInput = document.createElement('input');
-const codusuempInput = document.createElement('input');
+const codusuempInput = document.createElement('input'); */
 const rootDiv = document.getElementById('root');
 
-codlocalInput.setAttribute('name','CODLOCAL');
+/* codlocalInput.setAttribute('name','CODLOCAL');
 codlocalInput.setAttribute('value','1');
 codlocalInput.setAttribute('class','hidden');
 
@@ -70,11 +93,11 @@ sitfichaInput.setAttribute('class','hidden');
 codusuempInput.setAttribute('name','CODUSUEMP');
 codusuempInput.setAttribute('value','1');
 codusuempInput.setAttribute('class','hidden');
-
-
+ */
+/* 
 rootDiv.appendChild(codlocalInput);
 rootDiv.appendChild(sitfichaInput);
-rootDiv.appendChild(codusuempInput);
+rootDiv.appendChild(codusuempInput); */
 
 const form = document.getElementById('Cadastrar_ficha');
 
@@ -121,5 +144,5 @@ form.onsubmit = function(event) {
   const formData = urlencodeFormData(new FormData(form));
   enviaDados(formData);
   event.preventDefault();
-  window.location = '/fichas.html'
+  window.location = 'fichas.html'
 }
