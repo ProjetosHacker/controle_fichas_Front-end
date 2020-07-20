@@ -69,7 +69,8 @@ request.onload = function() {
     for (i = 0; i < ufInput.length; i = i + 1) {
       if (ufInput.options[i].value === element.UF) {
         ufInput.selectedIndex = i;
-  }}
+  }     
+}
   
  
 });

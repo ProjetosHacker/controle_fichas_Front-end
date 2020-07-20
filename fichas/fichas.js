@@ -104,7 +104,7 @@ request.onload = function() {
       table_Data6.innerHTML =  `${cpf_digitos[0]}${cpf_digitos[1]}${cpf_digitos[2]}
       .${cpf_digitos[3]}${cpf_digitos[4]}${cpf_digitos[5]}.
       ${cpf_digitos[6]}${cpf_digitos[7]}${cpf_digitos[8]}
-   -${cpf_digitos[9]}${cpf_digitos[10]}`; ;
+   -${cpf_digitos[9]}${cpf_digitos[10]}`;
          table_Data7.innerHTML = element.CODLOCAL;
          table_Data8.innerHTML = estante_Detail[0].numestante;
          table_Data9.innerHTML = estante_Detail[0].numprateleira;
