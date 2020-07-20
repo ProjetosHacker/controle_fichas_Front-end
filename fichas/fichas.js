@@ -2,15 +2,11 @@ var request_estante = new XMLHttpRequest();
 let estantes_list = [];
 request_estante.open('GET', 'http://localhost:3000/estantes', true);
 request_estante.onload = function() {
-//  var data = JSON.parse(this.response);
- 
-}
-request_estante.onreadystatechange = function() {
   var data = JSON.parse(this.response);
-  estantes_list.push(data);
+  estantes_list.push(data); 
 }
-request_estante.send();
 
+request_estante.send();
 var request = new XMLHttpRequest()
 // let id_ficha = null;
 var globalVariable={
