@@ -1,3 +1,27 @@
+var request_estante = new XMLHttpRequest();
+let estantes_list = [];
+const codLocalSelect = document.getElementsByName('CODLOCAL')[0];
+request_estante.open('GET', 'http://localhost:3000/estantes', true);
+request_estante.onload = function() {
+var data = JSON.parse(this.response);
+data.forEach(element => 
+  estantes_list.push(element)
+  )
+  estantes_list.forEach(estante => {
+    console.log(estante.codlocal)
+    opt = document.createElement("option");
+    opt.value = estante.codlocal;
+    opt.textContent = `CodLocal: ${estante.codlocal} ||  Estante: ${estante.numestante} || Prateleira: ${estante.numprateleira}`;
+    codLocalSelect.appendChild(opt); 
+  } )  
+}
+
+codLocalSelect.addEventListener('change', function(event) {
+ alert(event.target.value);
+});
+
+request_estante.send();
+
 const matriculaInput = document.getElementsByName('MATRICULA')[0];
 const nomeServidorInput = document.getElementsByName('NOMESERVIDOR')[0];
 const nomeMaeInput = document.getElementsByName('NOMEMAE')[0];
@@ -59,7 +83,7 @@ const sitfichaInput = document.createElement('input');
 const codusuempInput = document.createElement('input');
 const rootDiv = document.getElementById('root');
 
-codlocalInput.setAttribute('name','CODLOCAL');
+/* codlocalInput.setAttribute('name','CODLOCAL');
 codlocalInput.setAttribute('value','1');
 codlocalInput.setAttribute('class','hidden');
 
@@ -70,11 +94,11 @@ sitfichaInput.setAttribute('class','hidden');
 codusuempInput.setAttribute('name','CODUSUEMP');
 codusuempInput.setAttribute('value','1');
 codusuempInput.setAttribute('class','hidden');
-
-
+ */
+/* 
 rootDiv.appendChild(codlocalInput);
 rootDiv.appendChild(sitfichaInput);
-rootDiv.appendChild(codusuempInput);
+rootDiv.appendChild(codusuempInput); */
 
 const form = document.getElementById('Cadastrar_ficha');
 
@@ -121,5 +145,5 @@ form.onsubmit = function(event) {
   const formData = urlencodeFormData(new FormData(form));
   enviaDados(formData);
   event.preventDefault();
-  window.location = '/fichas.html'
+  window.location = 'fichas.html'
 }
