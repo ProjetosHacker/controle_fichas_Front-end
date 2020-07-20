@@ -8,7 +8,6 @@ data.forEach(element =>
   estantes_list.push(element)
   )
   estantes_list.forEach(estante => {
-    console.log(estante.codlocal)
     opt = document.createElement("option");
     opt.value = estante.codlocal;
     opt.textContent = `CodLocal: ${estante.codlocal} ||  Estante: ${estante.numestante} || Prateleira: ${estante.numprateleira}`;
@@ -17,7 +16,6 @@ data.forEach(element =>
 }
 
 codLocalSelect.addEventListener('change', function(event) {
- alert(event.target.value);
 });
 
 request_estante.send();
@@ -27,8 +25,6 @@ const nomeServidorInput = document.getElementsByName('NOMESERVIDOR')[0];
 const nomeMaeInput = document.getElementsByName('NOMEMAE')[0];
 const dataNascimentoInput = document.getElementsByName('DTNASC')[0];
 const cpfServidorInput = document.getElementsByName('CPF')[0];
-const estanteInput = document.getElementsByName('ESTANTE')[0];
-const prateleiraInput = document.getElementsByName('PRATELEIRA')[0];
 const rgInput = document.getElementsByName('RG')[0];
 const orgaoExpInput = document.getElementsByName('ORGAOEXP')[0];
 const ufInput = document.getElementsByName('UF')[0];
@@ -51,7 +47,10 @@ request.onload = function() {
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
     data.forEach(element => {
-            
+      codLocalSelect.selectedIndex = element.CODLOCAL;
+     console.log(codLocalSelect.options[1].value + " = " +  element.CODLOCAL +  " = " + codLocalSelect.selectedIndex );        
+           
+     
     matriculaInput.setAttribute('value',element.MATRICULA);
     nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);
     nomeMaeInput.setAttribute('value',element.NOMEMAE);
@@ -64,9 +63,6 @@ request.onload = function() {
     $('#date').mask('00/00/0000');
     cpfServidorInput.setAttribute('value',element.CPF);
     $('#cpf').mask('000.000.000-00');
- 
-    estanteInput.setAttribute('value',element.ESTANTE);
-    prateleiraInput.setAttribute('value',element.PRATELEIRA);
     rgInput.setAttribute('value',element.RG);
     orgaoExpInput.setAttribute('value', element.ORGAOEXP);
     console.log(ufInput);
@@ -74,13 +70,15 @@ request.onload = function() {
       if (ufInput.options[i].value === element.UF) {
         ufInput.selectedIndex = i;
   }}
-    });
+  
+ 
+});
    }
   }
   request.send();
-const codlocalInput = document.createElement('input');
+/* const codlocalInput = document.createElement('input');
 const sitfichaInput = document.createElement('input');
-const codusuempInput = document.createElement('input');
+const codusuempInput = document.createElement('input'); */
 const rootDiv = document.getElementById('root');
 
 /* codlocalInput.setAttribute('name','CODLOCAL');
