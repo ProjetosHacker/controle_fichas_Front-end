@@ -1,3 +1,28 @@
+const iscpf = (cpf) => {
+  cpf = cpf.replace(/[^\d]+/g, '');
+  // verificando se tem a quantidade certa de caracter e se não tem todos caracteres iguais
+  if(cpf.length !== 11 || /^(\d)\1+$/.test(cpf))
+      return false;
+  let soma = 0,
+      resto;
+  for (var i = 1; i <= 9; i++)
+      soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
+  resto = (soma * 10) % 11;
+  if((resto == 10) || (resto == 11))
+      resto = 0;
+  if(resto != parseInt(cpf.substring(9, 10)) )
+      return false;
+  soma = 0;
+  for(var i = 1; i <= 10; i++)
+      soma = soma + parseInt(cpf.substring(i-1, i)) * (12 - i);
+  resto = (soma * 10) % 11;
+  if((resto == 10) || (resto == 11))
+      resto = 0;
+  if(resto != parseInt(cpf.substring(10, 11) ) )
+      return false;
+  return true;
+}
+
 var request_estante = new XMLHttpRequest();
 let estantes_list = [];
 const codLocalSelect = document.getElementsByName('CODLOCAL')[0];
@@ -77,29 +102,11 @@ request.onload = function() {
    }
   }
   request.send();
-/* const codlocalInput = document.createElement('input');
-const sitfichaInput = document.createElement('input');
-const codusuempInput = document.createElement('input'); */
+
 const rootDiv = document.getElementById('root');
 
-/* codlocalInput.setAttribute('name','CODLOCAL');
-codlocalInput.setAttribute('value','1');
-codlocalInput.setAttribute('class','hidden');
 
-sitfichaInput.setAttribute('name','SITFICHA');
-sitfichaInput.setAttribute('value','1');
-sitfichaInput.setAttribute('class','hidden');
-
-codusuempInput.setAttribute('name','CODUSUEMP');
-codusuempInput.setAttribute('value','1');
-codusuempInput.setAttribute('class','hidden');
- */
-/* 
-rootDiv.appendChild(codlocalInput);
-rootDiv.appendChild(sitfichaInput);
-rootDiv.appendChild(codusuempInput); */
-
-const form = document.getElementById('Cadastrar_ficha');
+const form = document.getElementById('editar_ficha');
 
 //take a multi-part form data type and transform in x-www-url-form-encode
 function urlencodeFormData(fd){
@@ -126,12 +133,15 @@ let response = await fetch('http://localhost:3000/alterar/fichas/' + ficha_id, {
   alert(result.message);
 }
 
-const button_voltar = document.getElementsByName('button_voltar')[0];
-button_voltar.addEventListener('click', function() {
-  window.location = 'fichas.html';
-});
-
-form.onsubmit = function(event) {
+const button_editar = document.getElementsByName('button_editar')[0];
+button_editar.addEventListener('click', function() {
+  var cpfIsValid = iscpf(document.getElementsByName('CPF')[0].value);
+console.log(cpfIsValid);
+if( !cpfIsValid) {
+ alert('Cpf invalido, a alteração não foi efetuada !');
+}
+else {
+  alert('Cpf valido, a alteração foi efetuada !');
   var str = cpfServidorInput.value;
   clearCPF = str.replace(/[^\d]+/g,'');
   cpfServidorInput.value = clearCPF; 
@@ -145,4 +155,16 @@ form.onsubmit = function(event) {
   enviaDados(formData);
   event.preventDefault();
   window.location = 'fichas.html'
+}
+});
+
+
+const button_voltar = document.getElementsByName('button_voltar')[0];
+button_voltar.addEventListener('click', function() {
+  window.location = 'fichas.html';
+});
+
+
+form.onsubmit = function(event) {
+  
 }
