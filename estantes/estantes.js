@@ -7,7 +7,6 @@ var request = new XMLHttpRequest()
     };  */
 request.open('GET', 'http://localhost:3000/estantes', true)
 request.onload = function() {
-
   // Begin accessing JSON data here
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
@@ -21,6 +20,7 @@ request.onload = function() {
     table_line.appendChild(document.createElement('th')).innerHTML='Cod.LOCAL';
     table_line.appendChild(document.createElement('th')).innerHTML='Estante';
     table_line.appendChild(document.createElement('th')).innerHTML='Prateleira';
+    console.log(data);
      data.forEach(element => {
          table_lineBody = document.createElement('tr');
          table_Data = document.createElement('td');
@@ -31,33 +31,32 @@ request.onload = function() {
         const buttonDeleteFicha = document.createElement('a');
         buttonDeleteFicha.setAttribute('class','material-icons');
         buttonDeleteFicha.innerHTML = 'delete';
-
         linkAlterarFicha.setAttribute('class','material-icons');
         linkAlterarFicha.innerHTML = 'edit';
         linkFichaDetails.addEventListener('click', function() {
-          codLocal = element.CODLOCAL; 
+          codLocal = element.codlocal; 
           localStorage.setItem('cod_Local_Estante', codLocal);
         });
         linkAlterarFicha.addEventListener('click', function() {
-          codLocal = element.CODLOCAL; 
+          codLocal = element.codlocal; 
           localStorage.setItem('cod_Local_Estante', codLocal);
         });
 
         buttonDeleteFicha.addEventListener('click', function() {
-          codLocal = element.CODLOCAL; 
+          codLocal = element.codlocal; 
           localStorage.setItem('cod_Local_Estante', codLocal);
         });
         
         // linkFichaDetails.href = 'DetalhesFicha.html';
         linkAlterarFicha.href = 'editarEstantes.html';
         buttonDeleteFicha.href = 'deleteEstantes.html';
-        linkFichaDetails.textContent = element.CODLOCAL
+        linkFichaDetails.textContent = element.codlocal
         table_Data.appendChild(linkFichaDetails);
         table_Data.appendChild(linkAlterarFicha);
         table_Data.appendChild(buttonDeleteFicha);
 
-        table_Data2.innerHTML = element.NUMESTANTE;
-         table_Data3.innerHTML = element.NUMPRATELEIRA;
+        table_Data2.innerHTML = element.numestante;
+         table_Data3.innerHTML = element.numprateleira;
      
                          
          table_lineBody.appendChild(table_Data)
