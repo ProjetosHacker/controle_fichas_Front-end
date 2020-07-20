@@ -1,3 +1,28 @@
+const iscpf = (cpf) => {
+  cpf = cpf.replace(/[^\d]+/g, '');
+  // verificando se tem a quantidade certa de caracter e se não tem todos caracteres iguais
+  if(cpf.length !== 11 || /^(\d)\1+$/.test(cpf))
+      return false;
+  let soma = 0,
+      resto;
+  for (var i = 1; i <= 9; i++)
+      soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
+  resto = (soma * 10) % 11;
+  if((resto == 10) || (resto == 11))
+      resto = 0;
+  if(resto != parseInt(cpf.substring(9, 10)) )
+      return false;
+  soma = 0;
+  for(var i = 1; i <= 10; i++)
+      soma = soma + parseInt(cpf.substring(i-1, i)) * (12 - i);
+  resto = (soma * 10) % 11;
+  if((resto == 10) || (resto == 11))
+      resto = 0;
+  if(resto != parseInt(cpf.substring(10, 11) ) )
+      return false;
+  return true;
+}
+
 var request_estante = new XMLHttpRequest();
 let estantes_list = [];
 const codLocalSelect = document.getElementsByName('CODLOCAL')[0];
@@ -21,36 +46,13 @@ codLocalSelect.addEventListener('change', function(event) {
 });
 
 request_estante.send();
-// const estante_list_flat = estantes_list.flat(1);
-
-/* estantes_list.forEach(element => {
-/*   console.log("teste");
-  opt = document.createElement("option");
-  opt.value = element;
-  opt.textContent = element;
-  codLocalSelect.appendChild(opt); 
-});  */
 const codlocalInput = document.createElement('input');
 const sitfichaInput = document.createElement('input');
 const codusuempInput = document.createElement('input');
 const rootDiv = document.getElementById('root');
 
-/* 
-codlocalInput.setAttribute('name','CODLOCAL');
-codlocalInput.setAttribute('value','1');
-codlocalInput.setAttribute('class','hidden');
- */
-sitfichaInput.setAttribute('name','SITFICHA');
-sitfichaInput.setAttribute('value','1');
-/* sitfichaInput.setAttribute('class','hidden'); */
-
-codusuempInput.setAttribute('name','CODUSUEMP');
-codusuempInput.setAttribute('value','1');
-codusuempInput.setAttribute('class','hidden');
-
-
 // rootDiv.appendChild(codlocalInput);
-rootDiv.appendChild(sitfichaInput);
+/* rootDiv.appendChild(sitfichaInput); */
 // rootDiv.appendChild(codusuempInput);
 
 
@@ -97,8 +99,16 @@ button_voltar.addEventListener('click', function() {
   window.location = 'fichas.html';
 });
 
-form.onsubmit = function(event) {
-    var str = document.getElementsByName('CPF')[0].value;
+const button_cadastrar = document.getElementsByName('button_cadastrar')[0];
+button_cadastrar.addEventListener('click', function() {
+  var cpfIsValid = iscpf(document.getElementsByName('CPF')[0].value);
+console.log(cpfIsValid);
+if( !cpfIsValid) {
+ alert('Cpf invalido, o cadastro não foi efetuado !');
+}
+else {
+ alert('Cpf valido, o cadastro  foi efetuado !');
+ var str = document.getElementsByName('CPF')[0].value;
     clearCPF = str.replace(/[^\d]+/g,'');
     document.getElementsByName('CPF')[0].value = clearCPF;
     const date = document.getElementsByName('DTNASC')[0].value.split('/');
@@ -110,6 +120,6 @@ form.onsubmit = function(event) {
     const formData = urlencodeFormData(new FormData(form)); 
   enviaDados(formData);
   event.preventDefault();
-  window.location = '/fichas.html'
-
+  window.location = 'fichas.html'
 }
+});
