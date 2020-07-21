@@ -21,9 +21,9 @@ request.onload = function() {
     const root = document.getElementById('root');
     root.removeChild(document.getElementById('loading'))
     const table = document.createElement('table');
-    table.setAttribute('class', 'ls-table ls-table-striped ls-hover');
-    table_line = document.createElement('tr');
-    table.appendChild(table_line);
+    table.setAttribute('class', 'ls-table ls-table-striped ls-bg-header ls-lg-space');
+    table_line = document.createElement('thead');
+  
     table_line.appendChild(document.createElement('th')).innerHTML='Ficha Num.';
     table_line.appendChild(document.createElement('th')).innerHTML='Matric. Servidor';
     table_line.appendChild(document.createElement('th')).innerHTML='Nome Servidor';
@@ -36,6 +36,8 @@ request.onload = function() {
     table_line.appendChild(document.createElement('th')).innerHTML='RG';
     table_line.appendChild(document.createElement('th')).innerHTML='Orgão Expedidor';
     table_line.appendChild(document.createElement('th')).innerHTML='UF';
+    table.appendChild(table_line);
+    const tbody = document.createElement('tbody');
     data.forEach((element) => {
        const estante_Detail =   estantes_list[0].filter(estante => 
           estante.codlocal === element.CODLOCAL);
@@ -79,8 +81,8 @@ request.onload = function() {
         linkAlterarFicha.href = 'editarficha.html';
         buttonDeleteFicha.href = 'deletefichas.html';
         linkFichaDetails.textContent = element.NUMFICHA
-        table_Data.appendChild(linkAlterarFicha);
         table_Data.appendChild(linkFichaDetails);
+        table_Data.appendChild(linkAlterarFicha);
         table_Data.appendChild(buttonDeleteFicha);
 
         table_Data2.innerHTML = element.MATRICULA;
@@ -123,9 +125,10 @@ request.onload = function() {
          table_lineBody.appendChild(table_Data10);
          table_lineBody.appendChild(table_Data11);
          table_lineBody.appendChild(table_Data12);
-         table.appendChild(table_lineBody)
-      
-       
+         
+         tbody.appendChild(table_lineBody);
+         table.appendChild(tbody);
+            
      });
      document.getElementById('root').appendChild(table);
     } else {
