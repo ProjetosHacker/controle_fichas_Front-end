@@ -92,7 +92,7 @@ request.onload = function() {
         root.appendChild(document.createElement('label')).innerHTML= '&nbsp;&nbsp;' + element.UF;
         root.appendChild(document.createElement('br'))
 
-        const listFichaLink = document.createElement('a');
+ /*        const listFichaLink = document.createElement('a');
         listFichaLink.href = '/fichas.html';
         listFichaLink.textContent = 'Voltar a Lista de fichas';        
         
@@ -102,7 +102,7 @@ request.onload = function() {
 
         root.appendChild(indexLink);
         root.appendChild(document.createElement('br'));
-        root.appendChild(listFichaLink);
+        root.appendChild(listFichaLink); */
         
 
     });      

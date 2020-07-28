@@ -12,15 +12,15 @@ request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     const root = document.getElementById('root');
     root.removeChild(document.getElementById('loading'))
-
     const table = document.createElement('table');
-    table.setAttribute('class', 'table')
-    table_line = document.createElement('tr');
-    table.appendChild(table_line);
+    table.setAttribute('class', 'ls-table ls-table-striped ls-bg-header ls-lg-space');
+    table_line = document.createElement('thead');
     table_line.appendChild(document.createElement('th')).innerHTML='Cod.LOCAL';
     table_line.appendChild(document.createElement('th')).innerHTML='Estante';
     table_line.appendChild(document.createElement('th')).innerHTML='Prateleira';
+    table.appendChild(table_line)
     console.log(data);
+    const tbody = document.createElement('tbody');
      data.forEach(element => {
          table_lineBody = document.createElement('tr');
          table_Data = document.createElement('td');
@@ -62,8 +62,8 @@ request.onload = function() {
          table_lineBody.appendChild(table_Data)
          table_lineBody.appendChild(table_Data2);
          table_lineBody.appendChild(table_Data3);
-         table.appendChild(table_lineBody)
-      
+         tbody.appendChild(table_lineBody);
+         table.appendChild(tbody);      
        
      });
      document.getElementById('root').appendChild(table);
