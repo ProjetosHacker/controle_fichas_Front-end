@@ -23,7 +23,7 @@ request.onload = function() {
     const table = document.createElement('table');
     table.setAttribute('class', 'ls-table ls-table-striped ls-bg-header ls-lg-space');
     table_line = document.createElement('thead');
-  
+    table.appendChild(table_line)
     table_line.appendChild(document.createElement('th')).innerHTML='Ficha Num.';
     table_line.appendChild(document.createElement('th')).innerHTML='Matric. Servidor';
     table_line.appendChild(document.createElement('th')).innerHTML='Nome Servidor';

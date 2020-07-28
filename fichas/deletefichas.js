@@ -50,7 +50,7 @@ request.onload = function() {
   async function voltarTelaInicial(event) {
     event.preventDefault();
     console.log("aqui")
-    window.location = '/fichas.html'
+    window.location = 'fichas.html'
   }
 
     async function apagaDados(event) {
