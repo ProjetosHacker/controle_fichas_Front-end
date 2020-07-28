@@ -72,9 +72,18 @@ request.onload = function() {
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
     data.forEach(element => {
-      codLocalSelect.selectedIndex = element.CODLOCAL;
+      let selectedComboIndex;
+        for(option = 0; option < codLocalSelect.options.length; option ++ ) {
+          if(codLocalSelect.options[option].value == element.CODLOCAL) { 
+          console.log(codLocalSelect.options[option] + option);
+          selectedComboIndex = option;
+          }
+      }
+      
+      codLocalSelect.selectedIndex = selectedComboIndex
+   /*    codLocalSelect.selectedIndex = element.CODLOCAL;
      console.log(codLocalSelect.options[1].value + " = " +  element.CODLOCAL +  " = " + codLocalSelect.selectedIndex );        
-           
+            */
      
     matriculaInput.setAttribute('value',element.MATRICULA);
     nomeServidorInput.setAttribute('value',element.NOMESERVIDOR);

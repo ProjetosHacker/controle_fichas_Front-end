@@ -70,6 +70,7 @@ request.onload = function() {
         linkAlterarFicha.addEventListener('click', function() {
           id_ficha = element.NUMFICHA; 
           localStorage.setItem('numero_ficha', id_ficha);
+          localStorage.setItem('cod_Local_Estante', element.CODLOCAL);
         });
 
         buttonDeleteFicha.addEventListener('click', function() {
